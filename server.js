@@ -10,7 +10,7 @@ const codeRoute = require("./routes/codeOutputRoute.js");
 
 // Middelware
 
-app.use(cors(corsOption));
+// app.use(cors(corsOption));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
