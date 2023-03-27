@@ -9,17 +9,23 @@ const app = express();
 const codeRoute = require("./routes/codeOutputRoute.js");
 
 // Middelware
+const corsOption = {
+    credentials: true,
+    origin: ['https://illustrious-buttercream-7f37f3.netlify.app'],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
+};
 
-// app.use(cors(corsOption));
+app.use(cors(corsOption));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-app.use(cors({
-    origin: 'https://illustrious-buttercream-7f37f3.netlify.app',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type']
-}));
+// app.use(cors({
+//   origin: 'https://illustrious-buttercream-7f37f3.netlify.app',
+//   methods: ['GET', 'POST', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type']
+// }));
 
 
 const server = http.createServer(app);
