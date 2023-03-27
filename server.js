@@ -12,21 +12,24 @@ const codeRoute = require("./routes/codeOutputRoute.js");
 
 const corsOption = {
     credentials: true,
-    origin: ['http://localhost:3000'],
+    origin: ['*'],
 };
 app.use(cors(corsOption));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://tiny-salamander-a49c64.netlify.app');
+    next();
+});
 
-app.use(express.static('build'))
 
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: '*',
         methods: ['GET', 'POST']
     },
 });
