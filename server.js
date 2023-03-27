@@ -10,19 +10,16 @@ const codeRoute = require("./routes/codeOutputRoute.js");
 
 // Middelware
 
-const corsOption = {
-    credentials: true,
-    origin: ['*'],
-};
 app.use(cors(corsOption));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://tiny-salamander-a49c64.netlify.app');
-    next();
-});
 
+app.use(cors({
+    origin: 'https://illustrious-buttercream-7f37f3.netlify.app',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
+}));
 
 
 const server = http.createServer(app);
