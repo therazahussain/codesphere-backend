@@ -11,7 +11,7 @@ const codeRoute = require("./routes/codeOutputRoute.js");
 // Middelware
 const corsOption = {
     credentials: true,
-    origin: ['https://illustrious-buttercream-7f37f3.netlify.app'],
+    origin: ['https://codesphere.netlify.app'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type']
 };
