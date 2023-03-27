@@ -7,26 +7,26 @@ const bodyParser = require("body-parser");
 const ACTIONS = require('./Action.js');
 const app = express();
 const codeRoute = require("./routes/codeOutputRoute.js");
-const path = require('path');
 
 // Middelware
 
 const corsOption = {
     credentials: true,
-    origin: ['https://tiny-salamander-a49c64.netlify.app/'],
+    origin: ['http://localhost:3000'],
 };
 app.use(cors(corsOption));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static('build'))
+
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: 'https://tiny-salamander-a49c64.netlify.app/',
+        origin: 'http://localhost:3000',
         methods: ['GET', 'POST']
     },
 });
