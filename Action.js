@@ -10,6 +10,8 @@ const ACTIONS = {
     FREEZE_CHANGE: 'freeze_change',
     SEND_OUTPUT: "send_output",
     SET_OUTPUT: "set_output",
+    ERROR_RUNNING: "error_while_running",
+    UNFREEZE_USER:"enable_run_button",
     LEAVE: 'leave',
 };
 

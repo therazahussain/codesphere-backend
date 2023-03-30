@@ -95,6 +95,10 @@ io.on('connection', (socket) => {
         socket.in(roomId).emit(ACTIONS.SET_OUTPUT, { response })
     })
 
+    socket.on(ACTIONS.ERROR_RUNNING, ({ roomId, message }) => {
+        socket.in(roomId).emit(ACTIONS.UNFREEZE_USER, {message});
+    })
+
 
 
     socket.on('disconnecting', () => {
