@@ -76,8 +76,8 @@ io.on('connection', (socket) => {
     });
 
     // Listning for code sync to all connected users in a room 
-    socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
-        io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
+    socket.on(ACTIONS.SYNC_CODE, ({ socketId, code, language }) => {
+        io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code, language });
     });
 
     // to sync the dropdown selection
