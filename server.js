@@ -76,8 +76,8 @@ io.on('connection', (socket) => {
     });
 
     // Listning for code sync to all connected users in a room 
-    socket.on(ACTIONS.SYNC_CODE, ({ socketId, code, language }) => {
-        io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code, language });
+    socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
+        io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
     });
 
     // to sync the dropdown selection
@@ -86,7 +86,7 @@ io.on('connection', (socket) => {
     });
 
     // if a user trigeer run command stop other connected users from running the code until you get the output. 
-    socket.on(ACTIONS.RUN_TRIGGER, (roomId) => {
+    socket.on(ACTIONS.RUN_TRIGGER, ({roomId}) => {
         socket.in(roomId).emit(ACTIONS.FREEZE_CHANGE);
     });
 
