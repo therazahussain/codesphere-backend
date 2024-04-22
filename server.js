@@ -47,12 +47,15 @@ const userSocketMap = {};
 
 const getAllConnectedClients = (roomId) => {
     return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map((socketId) => {
+        // Check if userSocketMap has the socketId
+        const username = userSocketMap.hasOwnProperty(socketId) ? userSocketMap[socketId] : "Unknown";
         return {
             socketId,
-            username: userSocketMap[socketId],
-        }
-    })
-}
+            username,
+        };
+    });
+};
+
 
 
 io.on('connection', (socket) => {
